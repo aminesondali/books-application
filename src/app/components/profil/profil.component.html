@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+
+    
+
+<div class="container">
+    <h1> User Profil </h1>
+    <div class="row">
+        <div class=" offset-1 col-5 infoUser" *ngIf="user">
+            
+                
+                <ul class="list-unstyled">
+                    <li class="media">
+                        <span class="w-25 text-black font-weight-normal badge badge-lg badge-primary">#Id</span>
+                        <label class="media-body badge badge-lg badge-success">{{ user.id }}</label>
+                    </li>
+                    <li class="media">
+                        <span class="w-25 text-black font-weight-normal badge badge-primary">Nom</span>
+                        <label class="media-body badge badge-lg badge-success">{{ user.nom }}</label>
+                    </li>
+                    <li class="media">
+                        <span class="w-25 text-black font-weight-normal badge badge-primary">Prenom</span>
+                        <label class="media-body badge badge-lg badge-success">{{ user.prenom }}</label>
+                    </li>
+                    <li class="media">
+                        <span class="w-25 text-black font-weight-normal badge badge-primary">Email</span>
+                        <label class="media-body badge badge-lg badge-success">{{ user.email }}</label>
+                    </li>
+                    <li class="media">
+                        <span class="w-25 text-black font-weight-normal badge badge-primary">Role</span>
+                        <label class="media-body badge badge-lg badge-danger">{{ user.role }}</label>
+                    </li>
+                </ul>
+            
+        </div>
+        <div class="offset-2 col-4" *ngIf="user">
+                <img  src="../../../assets/images/profil.png" alt="">
+        </div>
+        
+    </div>
+</div>
+

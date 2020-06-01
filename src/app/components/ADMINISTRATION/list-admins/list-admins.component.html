@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>List of ADMINS</h1>
+  <table class="table table-striped ">
+      <thead class="table-primary">
+        <tr>
+          <th scope="col">#Id</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Prenom</th>
+          <th scope="col">Email</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let user of users">
+        <tr  *ngIf="user.role == 'ADMIN'">
+          <td>{{ user.id }}</td>
+          <td>{{ user.nom }}</td>
+          <td>{{ user.prenom }}</td>
+          <td>{{ user.email }}</td>
+          <td><a [routerLink]="['/profil', user.id]" class="btn btn-xs btn-success">Details</a> &nbsp; 
+            <a [routerLink]="['/updateUser', user.id]" class="btn btn-xs btn-warning">Update</a>&nbsp;
+            <a (click)="onDeleteUser(user.id)" class="btn btn-xs btn-danger">Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

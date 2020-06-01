@@ -1,0 +1,72 @@
+<div class="container">
+    <h3> Ajouter une catégorie: </h3>
+    <hr>
+    <div class="row">
+        <div class="col-12">
+            <form (ngSubmit)="onSubmit()" #addcategorie="ngForm" *ngIf="category" name="addcategoryForm">
+                <div class="row">
+                <div class="form-group col-8">
+                    <input type="text" class="form-control" [(ngModel)]="category.categoryName" name="categoryName"
+                        placeholder="Entrez une catégorie... " #title="ngModel" required>
+                   <!--  <div *ngIf="categoryName.touched || categoryName.invalid">
+                        <div *ngIf="categoryName.errors.required"><small>** La categorie du livre est requise</small></div>
+                    </div> -->
+                </div>
+                <div class="offset-1 col-2">
+                <button type="submit" [disabled]="!addcategorie.form.valid" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <h3>Liste des catégories: </h3>
+    <table class="table table-striped ">
+        <thead class="table-primary">
+          <tr>
+            <th scope="col">#Id</th>
+            <th scope="col">Category Name</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of categories">
+            <td>{{ category.id}}</td>
+            <td>{{ category.categoryName }}</td>
+            <td>
+                <!-- <button data-toggle="modal" data-target="#exampleModalCenter"class="btn btn-xs btn-warning">Update</button>&nbsp; -->
+                <a (click)="onDeleteCategory(category.id)" class="btn btn-xs btn-danger">Delete</a>
+              </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+
+<!-- Modal -->
+<!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Update Category</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form (ngSubmit)="onUpdateCategory()" #updatecategorie="ngForm" *ngIf="category">
+        <div class="row">
+        <div class="form-group col-8">
+            <input type="text" class="form-control" [(ngModel)]="category.categoryName" name="categoryName"
+                placeholder="Entrez une catégorie... " #title="ngModel" required>
+        </div>
+        <div class="offset-1 col-2">
+        <button type="submit" [disabled]="!updatecategorie.form.valid" class="btn btn-primary">Submit</button>
+    </div>
+</div>
+    </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> -->

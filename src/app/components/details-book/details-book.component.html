@@ -1,0 +1,38 @@
+
+	
+	<div class="container">
+        
+		<div class="card" *ngIf="book">
+            
+			<div class="container-fliud">
+                
+				<div class="wrapper row">
+					<div class="preview col-md-6">
+						<div class="image-table">
+						  <div ><img src="{{book.image}}" /></div>
+                        </div>
+                    </div>
+                    
+					<div class="details col-md-6">
+                        <h5 class="badge badge-secondary "> {{book.category}}</h5>
+                        <div>
+                            <h3 class="product-title">{{book.title}}</h3>
+                            <h6 class="author">{{book.author}}</h6>
+                        </div>
+						<div class="rating">
+						    <span style="font-weight:600">Noté par les internautes: &nbsp;</span> <span class="badge badge1 badge-danger">{{ book.note }}/10</span>
+						</div>
+						<p class="product-description"><span style="font-weight:600">Description: &nbsp;</span><br>{{book.description}}</p>
+                        
+                        <div class="priceCommander">
+                        <span class="product-price">Prix: &nbsp;</span><span class="prix">{{book.price}} MAD</span>
+                        <a (click)="addTocart(book.id)" class="btn btn-lg btn-outline-danger float-right" type="button">Commander</a>
+                    </div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+

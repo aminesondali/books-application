@@ -1,0 +1,78 @@
+<div class="container">
+    <h1> Update your profil</h1>
+    <div class="row">
+        <div class="col-6">
+            <form (ngSubmit)="onUpdateUser()" #updateUser="ngForm" *ngIf="user">
+                <div class="form-group">
+                    <label>Nom:</label>
+                    <input type="text" class="form-control" [(ngModel)]="user.nom" name="nom"
+                        placeholder="Entrez votre nom... " #nom="ngModel" required >
+
+                        <div *ngIf="nom.touched && nom.invalid">
+                            <div *ngIf="nom.errors.required"><small>** Le nom est requis</small></div>
+                            <div *ngIf="nom.errors.cannotContainSpace"><small>** Le nom ne peut pas contenir d'espaces</small></div>
+                        </div> 
+
+                </div>
+                <div class="form-group">
+                    <label>Prenom:</label>
+                    <input type="text" class="form-control" [(ngModel)]="user.prenom" name="prenom"
+                        placeholder="Entrez votre prenom... " #prenom="ngModel" required>
+
+                        <div *ngIf="prenom.touched && prenom.invalid">
+                            <div *ngIf="prenom.errors.required"><small>** Le prenom est requis</small></div>
+                            <div *ngIf="prenom.errors.cannotContainSpace"><small>** Le prenom ne peut pas contenir d'espaces</small></div>
+                        </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" class="form-control" [(ngModel)]="user.email" name="email"
+                        placeholder="Entrez votre email...  " #email="ngModel" required email>
+
+                        <div *ngIf="email.touched && nom.invalid">
+                            <div *ngIf="email.errors.required"><small>** L'email est requis</small></div>
+                            <div *ngIf="email.errors?.email"> 
+                                <small>** L'email est comme suit: <b>Username@Domain.com</b></small>
+                           </div> 
+                        </div>
+
+                </div>
+                <div class="form-group ">
+                    <label>Mot de passe:</label>
+                    <input type="password" class="form-control" [(ngModel)]="user.password" name="password"
+                        placeholder="Entrez votre password... " minlength="6" #password="ngModel" required >
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)">
+
+                        <div *ngIf="password.errors.required">
+                            <small>** Le mot de passe est requis</small>
+                        </div>
+                        <div *ngIf="password.errors.minlength">
+                            <small>** Le mot de passe doit contenir au moins 6 caracteres</small>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Photo de profil:</label>
+                    <input type="text" class="form-control" [(ngModel)]="user.photoProfil" name="photoProfil"
+                        placeholder="Entrez votre photo de profil... " #photoProfil="ngModel" required>
+                </div>
+
+                <button type="submit" [disabled]="!updateUser.form.valid" class="btn btn-warning">Update</button>
+            </form>
+        </div>
+
+        <div class="offset-2 col-4">
+
+                <img src="../../../assets/images/signup.png"/>
+
+
+        </div>
+
+        
+    </div>
+</div>
+

@@ -1,0 +1,17 @@
+.container{
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+.row{
+    margin-top: 20px;
+}
+
+small{
+    color: lightcoral
+}
+
+img{
+    max-width: 200px;
+    max-height: 200px;
+    margin-top: 50px;
+}

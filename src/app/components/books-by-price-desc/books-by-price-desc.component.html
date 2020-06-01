@@ -1,0 +1,37 @@
+<div class="container">
+    <h1 class="title"> BookStore</h1>
+    <hr>
+    <div class="offset-3 col-6">
+        <select id="filterBy" class="form-control" onchange="if (this.value) window.location.href=this.value">
+            <option value="/books-orderby-price-desc" selected>Trier par: Prix décroissant</option>
+            <option value="/books" class="browser-default custom-select">Ajouté récemment</option>
+            <option value="/books-orderby-price-asc">Prix croissant</option>
+            <option value="/books-orderby-note">Meilleure note</option>
+        </select>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-3" *ngFor="let book of books">
+            <div class="card border-secondary mb-3 " style="max-width: 20rem;">
+                <div class="card-header"><b>{{book.category}}</b></div>
+                <div class="card-body">
+                    <img src="{{book.image}}"class="card-img-top" alt="..." />
+                    <h4 class="card-title"><small>{{book.title}}</small></h4>
+                    <ul class="card-text">
+                        <li> <span>Author:</span>&nbsp; {{book.author}}</li>
+                        <li> <span>Note:</span> &nbsp; <div class="badge">{{book.note}}</div>
+                        </li>
+                    </ul>
+                    <div class="detailsBook"><a [routerLink]="['/details-book', book.id]"
+                            class="btn btn-xs btn-outline-success"><i class="fa fa-book" aria-hidden="true"></i> Plus
+                            d'informations</a></div>
+                    <div class="price float-left"> <span>{{book.price}} &nbsp; MAD </span></div>
+                    <a *ngIf="authService.userAuthenticated" (click)="addToCart(book.id)" class="btn btn-xs btn-danger float-right"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        Commander</a>
+                      <a routerLink="/signin" *ngIf=" !authService.userAuthenticated"class="btn btn-xs btn-danger float-right"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                          Commander</a> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

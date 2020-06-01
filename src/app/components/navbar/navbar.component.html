@@ -1,0 +1,100 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/home">Ebooks App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/books">BookStore</a>
+        </li>
+        <li class="nav-item" >
+          <a class="nav-link" routerLink="/about">About</a>
+        </li>
+
+        <!-- <li class="nav-item" >
+          <a class="nav-link" *ngIf="authService.isAdmin()"  routerLink="/Dashboard">Dashboard</a>
+        </li> -->
+        <li class="nav-item dropdown" >
+          <a class="nav-link dropdown-toggle" *ngIf="authService.userAuthenticated" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{this.authService.userAuthenticated.email}}</a>
+          <a class="nav-link dropdown-toggle"  *ngIf="!authService.userAuthenticated" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Connexion</a>
+
+          <div class="dropdown-menu" >
+            <a class="dropdown-item" *ngIf="!authService.userAuthenticated" routerLink="/signup"><i class="fa fa-user-plus"></i>&nbsp;Sign Up</a>
+            <a class="dropdown-item"  *ngIf="!authService.userAuthenticated" routerLink="/signin"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;
+              Sign In</a>
+              <a  class="dropdown-item"  *ngIf="authService.userAuthenticated" (click)="authService.removeTokenFromLocalStorage()"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Sign Out</a>
+          </div>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="authService.userAuthenticated">
+        
+
+       <li>
+        <button type="button" class="btn btn-light" data-toggle="modal" data-target=".bd-example-modal-lg">
+          <span class="fa fa-shopping-cart"> Panier &nbsp; </span>
+          <span class="badge badge-danger">{{cartBooks.length}}</span>
+        </button>
+        
+       </li> 
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    
+    <div class="modal-content">
+        <div class="container">
+      <h1> Panier</h1>
+
+        <div class="row" >
+            <div class="col-4">
+              <h5>Title</h5>
+            </div>
+            <div class="col-4">
+              <h5>Author</h5>
+            </div>
+            <div class="col-1">
+              <h5>Quantité</h5>
+            </div>
+            <div class="offset-1 col-2">
+              <h5>Prix</h5>
+            </div>
+          </div>
+          <hr>
+          <div class="row" *ngFor="let item of cartBooks">
+            <div class="col-4" *ngIf="item">
+              {{item.title}}
+            </div>
+            <div class="col-4" *ngIf="item">
+              {{item.author}}
+            </div>
+            <div class="col-1" *ngIf="item">
+              XXXXX
+            </div>
+            <div class="offset-1 col-2" *ngIf="item">
+              <h6>{{item.price}},00 MAD</h6>
+            </div>
+          </div>
+            <hr>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <div *ngIf="cartBooks.length > 0"> <a class="btn btn-small btn-warning" role="button" (click)="emptyCart()">Vider le panier</a></div>
+
+            </div>
+            
+            <br>
+            
+        </div>
+    </div>
+  </div>
+</div>

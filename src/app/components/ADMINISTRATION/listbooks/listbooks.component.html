@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>List of Books</h1>
+  <table class="table table-striped ">
+      <thead class="table-primary">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col">Category</th>
+          <th scope="col">Prix</th>
+          <th scope="col">Stock</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books">
+          <td>{{ book.id }}</td>
+          <td>{{ book.title }}</td>
+          <td>{{ book.author}}</td>
+          <td>{{ book.category }}</td>
+          <td>{{ book.price }}</td>
+          <td>{{ book.stock }}</td>
+          <td><a [routerLink]="['/details-book', book.id]" class="btn btn-sm btn-success">View</a> &nbsp; 
+            <a [routerLink]="['/updateBook', book.id]" class="btn btn-sm btn-warning">Update</a>&nbsp;
+            <a  (click)="onDeleteBook(book.id)" class="btn  btn-danger btn-sm">Delete</a>
+          
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -1,0 +1,24 @@
+.container{
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+.row{
+    margin-top: 30px;
+}
+
+small{
+    color: lightcoral
+}
+
+img{
+    max-width: 300px;
+    max-height: 300px;
+    padding-bottom: 100px;
+}
+.infoUser{
+    margin-top:80px
+}
+.media{
+    font-weight: 700;
+    font-size: 18px;
+}
