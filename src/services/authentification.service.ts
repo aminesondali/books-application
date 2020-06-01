@@ -60,7 +60,6 @@ export class authentificationService {
   public saveAuthenticatedUser() {
     if (this.userAuthenticated) {
       localStorage.setItem("authToken", this.token);
-      localStorage.setItem("cart", this.token);
     }
   }
 

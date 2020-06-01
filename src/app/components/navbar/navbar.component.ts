@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { panierService } from 'src/services/panier.service';
+import { Panier } from 'src/app/models/panier';
 import { Book } from 'src/app/models/book';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from 'src/services/books.service';
@@ -19,8 +21,7 @@ export class NavbarComponent implements OnInit {
                 private activatedRoute: ActivatedRoute, 
                 private bookService: BookService,
                 private router: Router,
-                public authService: authentificationService,
-                public userService: userService,
+                public authService: authentificationService
                 
              ) { 
              
@@ -92,7 +93,7 @@ export class NavbarComponent implements OnInit {
 
   emptyCart() {
     this.cartBooks = [];
-    localStorage.removeItem("cart");
+    localStorage.clear();
   }
 
 

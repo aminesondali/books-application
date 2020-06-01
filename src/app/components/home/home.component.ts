@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
     let data = localStorage.getItem('cart')
     //if this is not null convert it to JSON else initialize it as empty
     if (data !== null) {
+      console.log(data)
       this.cartBooks = JSON.parse(data);
     } else {
       this.cartBooks = [];
